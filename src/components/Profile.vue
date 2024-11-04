@@ -51,7 +51,7 @@
         </div>
 
         <!-- Save data -->
-        <a @click="" class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</a>
+        <a @click="saveUserData" class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</a>
 
       </div>
 
@@ -63,7 +63,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { getFirestore, doc, getDoc } from 'firebase/firestore'
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
 
 import { useRouter } from 'vue-router'
 import { getAuth, signOut } from 'firebase/auth'
@@ -93,13 +93,17 @@ const getUserData = async () => {
   }
 }
 
-onMounted(() => {
-  uid.value = route.params.id
-  getUserData()
-})
+const saveUserData = async () => {
+  const user = auth.currentUser
+  if (user) {
+    const uid = user.uid
 
-
-
+    await setDoc(doc(db, "users", uid), {
+      username: username.value,
+      description: description.value,
+    })
+  }
+}
 
 const handleSignOut = async () => {
   try {
@@ -110,4 +114,9 @@ const handleSignOut = async () => {
     console.log(error.code)
   }
 }
+
+onMounted(() => {
+  uid.value = route.params.id
+  getUserData()
+})
 </script>
