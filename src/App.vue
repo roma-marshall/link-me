@@ -5,6 +5,7 @@
         <component :is="Component" />
       </transition>
     </router-view>
+    <notifications position="top left" />
   </div>
 </template>
 

@@ -9,7 +9,7 @@
           </svg>
         </a>
 
-        <div class="cursor-pointer p-3 border border-gray-300 bg-gray-100 rounded-full">
+        <div @click="copyPath" class="cursor-pointer p-3 ml-auto mr-0 border border-gray-300 bg-gray-100 rounded-full">
           <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 0 0-2.25 2.25v9a2.25 2.25 0 0 0 2.25 2.25h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25H15m0-3-3-3m0 0-3 3m3-3V15" />
           </svg>
@@ -116,6 +116,23 @@ const getUserData = async () => {
     console.log("No user data was found")
     //todo: redirect to 404 page
   }
+}
+
+import { useClipboard } from '@vueuse/core'
+import { useNotification } from '@kyvg/vue3-notification'
+
+const { copy } = useClipboard()
+const { notify }  = useNotification()
+
+const copyPath = () => {
+  copy(window.location.href)
+  notify({
+    title: 'Copied!',
+    type: 'notification',
+    speed: 500,
+    duration: 1500,
+    ignoreDuplicates: true
+  })
 }
 
 onMounted(() => {
