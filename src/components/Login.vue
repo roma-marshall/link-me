@@ -44,8 +44,10 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 
+const router = useRouter()
 const email = ref()
 const password = ref()
 const auth = getAuth()
@@ -53,6 +55,7 @@ const auth = getAuth()
 const logIn = async () => {
   try {
     await signInWithEmailAndPassword(auth, email.value, password.value)
+    await router.push(`/user/${auth.currentUser.uid}`)
     console.log('Successfully log in!')
   } catch (error) {
     console.log(error.code)

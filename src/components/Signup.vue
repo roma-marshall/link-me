@@ -48,16 +48,20 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'
 
+const router = useRouter()
 const email = ref()
 const password = ref()
 const auth = getAuth()
+
 
 const signUp = async () => {
   try {
     await createUserWithEmailAndPassword(auth, email.value, password.value);
     await sendEmailVerification(auth.currentUser)
+    await router.push(`/user/${auth.currentUser.uid}`)
     console.log('Successfully sign up!')
   } catch (error) {
     console.log(error.code)
