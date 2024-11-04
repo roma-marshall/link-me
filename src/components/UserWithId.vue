@@ -34,13 +34,43 @@
         <span class="w-3/4">{{ description }}</span>
       </div>
 
-      <div v-if="websiteLink" class="flex flex-col mt-10">
-        <a :href="websiteLink" target="_blank" class="flex justify-center py-4 md:w-1/2 md:mx-auto relative border border-black rounded-full bg-gray-200 cursor-pointer">
-          <svg class="w-6 h-6 absolute left-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
-          </svg>
-          <span>{{ websiteTitle ? websiteTitle : websiteLink }}</span>
-        </a>
+      <div class="flex flex-col space-y-5 mt-10">
+        <div v-if="websiteLink" class="flex flex-col">
+          <a :href="websiteLink" target="_blank" class="flex justify-center py-4 md:w-1/2 md:mx-auto relative border border-black rounded-full bg-gray-200 cursor-pointer">
+            <svg class="w-6 h-6 absolute left-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
+            </svg>
+            <span>{{ websiteTitle ? websiteTitle : websiteLink }}</span>
+          </a>
+        </div>
+
+        <div v-if="tgLink" class="flex flex-col mt-10">
+          <a :href="tgLink" target="_blank" class="flex justify-center py-4 md:w-1/2 md:mx-auto relative border border-black rounded-full bg-gray-200 cursor-pointer">
+            <svg class="w-6 h-6 absolute left-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
+            </svg>
+            <span>Telegram</span>
+          </a>
+        </div>
+
+        <div v-if="instLink" class="flex flex-col mt-10">
+          <a :href="instLink" target="_blank" class="flex justify-center py-4 md:w-1/2 md:mx-auto relative border border-black rounded-full bg-gray-200 cursor-pointer">
+            <svg class="w-6 h-6 absolute left-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
+            </svg>
+            <span>Instagram</span>
+          </a>
+        </div>
+
+        <div v-if="tiktokLink" class="flex flex-col mt-10">
+          <a :href="tiktokLink" target="_blank" class="flex justify-center py-4 md:w-1/2 md:mx-auto relative border border-black rounded-full bg-gray-200 cursor-pointer">
+            <svg class="w-6 h-6 absolute left-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
+            </svg>
+            <span>TikTok</span>
+          </a>
+        </div>
+
       </div>
     </div>
   </div>
@@ -60,6 +90,12 @@ const username = ref()
 const description = ref()
 const websiteTitle = ref()
 const websiteLink = ref()
+const tgTitle = ref()
+const tgLink = ref()
+const instTitle = ref()
+const instLink = ref()
+const tiktokTitle = ref()
+const tiktokLink = ref()
 
 const getUserData = async () => {
   const userDoc = await getDoc(doc(db, "users", uid.value))
@@ -70,6 +106,12 @@ const getUserData = async () => {
     description.value = userData.description
     websiteTitle.value = userData.websiteTitle
     websiteLink.value = userData.websiteLink
+    tgTitle.value = userData.tgTitle
+    tgLink.value = userData.tgLink
+    instTitle.value = userData.instTitle
+    instLink.value = userData.instLink
+    tiktokTitle.value = userData.tiktokTitle
+    tiktokLink.value = userData.tiktokLink
   } else {
     console.log("No user data was found")
     //todo: redirect to 404 page

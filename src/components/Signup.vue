@@ -68,6 +68,9 @@ const signUp = async () => {
       description: 'A UFO flew in and posted this caption here',
       websiteTitle: '',
       websiteLink: '',
+      tgLink: '',
+      instLink: '',
+      tiktokLink: '',
     })
 
     await router.push('/profile')
