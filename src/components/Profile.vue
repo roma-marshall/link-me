@@ -59,7 +59,10 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
               </svg>
             </span>
-            <input v-model="website" type="text" id="website-admin" class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="website">
+            <div class="flex flex-col w-full">
+              <input v-model="websiteTitle" type="text" id="website-admin" class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="title">
+              <input v-model="websiteLink" type="text" id="website-admin" class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="website">
+            </div>
           </div>
         </div>
 
@@ -88,7 +91,8 @@ const db = getFirestore()
 const uid = ref()
 const username = ref()
 const description = ref()
-const website = ref()
+const websiteTitle = ref()
+const websiteLink = ref()
 
 const getUserData = async () => {
   const user = auth.currentUser
@@ -101,7 +105,8 @@ const getUserData = async () => {
       const userData = userDoc.data()
       username.value = userData.username
       description.value = userData.description
-      website.value = userData.website
+      websiteTitle.value = userData.websiteTitle
+      websiteLink.value = userData.websiteLink
     } else {
       console.log("No user data was found")
     }
@@ -116,7 +121,8 @@ const saveUserData = async () => {
     await setDoc(doc(db, "users", uid), {
       username: username.value,
       description: description.value,
-      website: website.value,
+      websiteTitle: websiteTitle.value,
+      websiteLink: websiteLink.value,
     })
   }
 }
