@@ -50,16 +50,24 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'
+import { getFirestore, doc, setDoc } from 'firebase/firestore'
 
 const router = useRouter()
 const email = ref()
 const password = ref()
 const auth = getAuth()
+const db = getFirestore()
 
 const signUp = async () => {
   try {
     await createUserWithEmailAndPassword(auth, email.value, password.value);
     await sendEmailVerification(auth.currentUser)
+
+    await setDoc(doc(db, "users", auth.currentUser.uid), {
+      username: '@alice',
+      description: 'Discover my work an see where you can find me',
+    })
+
     await router.push('/profile')
     console.log('Successfully sign up!')
   } catch (error) {
