@@ -1,11 +1,14 @@
 <template>
-  <div class="my-20">
-<!--    <Login />-->
-<!--    <Signup />-->
+  <div>
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+    <notifications position="top left" />
   </div>
 </template>
 
 <script setup>
-import Login from './components/Login.vue'
-import Signup from './components/Signup.vue'
+
 </script>
