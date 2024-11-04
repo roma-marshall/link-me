@@ -64,7 +64,7 @@ const signUp = async () => {
     await sendEmailVerification(auth.currentUser)
 
     await setDoc(doc(db, "users", auth.currentUser.uid), {
-      username: '@alice',
+      username: auth.currentUser.email.slice(0, 5),
       description: 'Discover my work an see where you can find me',
     })
 
