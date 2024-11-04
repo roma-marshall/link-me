@@ -164,6 +164,16 @@ const saveUserData = async () => {
       instLink: instLink.value,
       tiktokLink: tiktokLink.value,
     })
+
+    notify({
+      title: 'Saved',
+      type: 'notification',
+      speed: 500,
+      duration: 1500,
+      ignoreDuplicates: true
+    })
+
+    await router.push(`/user/${auth.currentUser.uid}`)
   }
 }
 
