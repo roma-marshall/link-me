@@ -46,7 +46,9 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { useNotification } from '@kyvg/vue3-notification'
 
+const { notify }  = useNotification()
 const router = useRouter()
 const email = ref()
 const password = ref()
@@ -57,7 +59,53 @@ const logIn = async () => {
     await signInWithEmailAndPassword(auth, email.value, password.value)
     await router.push('/profile')
   } catch (error) {
-    console.log(error.code)
+    switch (error.code) {
+      case 'auth/invalid-email':
+        notify({
+          title: 'Invalid email',
+          type: 'notification',
+          speed: 500,
+          duration: 1500,
+          ignoreDuplicates: true
+        })
+        break
+      case 'auth/missing-email':
+        notify({
+          title: 'Missing email',
+          type: 'notification',
+          speed: 500,
+          duration: 1500,
+          ignoreDuplicates: true
+        })
+        break
+      case 'auth/missing-password':
+        notify({
+          title: 'Missing password',
+          type: 'notification',
+          speed: 500,
+          duration: 1500,
+          ignoreDuplicates: true
+        })
+        break
+      case 'auth/invalid-credential':
+        notify({
+          title: 'Wrong email or password',
+          type: 'notification',
+          speed: 500,
+          duration: 1500,
+          ignoreDuplicates: true
+        })
+        break
+      default:
+        notify({
+          title: 'Unexpected error. Try later',
+          type: 'notification',
+          speed: 500,
+          duration: 1500,
+          ignoreDuplicates: true
+        })
+        break
+    }
   }
 }
 </script>
