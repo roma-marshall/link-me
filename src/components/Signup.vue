@@ -38,8 +38,6 @@
         <div class="text-center">
           Already have an account? <router-link to="/login" class="underline text-blue-500">Log In</router-link>
         </div>
-        <!--    <router-link to="/login">login</router-link>-->
-        <!--    <router-link to="/signup">signup</router-link>-->
       </div>
     </div>
     <div class="w-full">
@@ -57,10 +55,10 @@ const password = ref()
 const auth = getAuth()
 
 const signUp = async () => {
-  console.log(auth)
   try {
     await createUserWithEmailAndPassword(auth, email.value, password.value);
     await sendEmailVerification(auth.currentUser)
+    console.log('Successfully sign up!')
   } catch (error) {
     console.log(error.code)
   }
