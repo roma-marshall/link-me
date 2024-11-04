@@ -40,7 +40,7 @@
         </div>
       </div>
     </div>
-    <div class="w-full">
+    <div class="w-full hidden md:block">
       <img class="h-screen w-full" src="https://placeholder.pics/svg/768x1024/DEDEDE/555555" alt="placeholder">
     </div>
   </div>
@@ -65,7 +65,7 @@ const signUp = async () => {
 
     await setDoc(doc(db, "users", auth.currentUser.uid), {
       username: auth.currentUser.email.slice(0, 5),
-      description: 'Discover my work an see where you can find me',
+      description: 'A UFO flew in and posted this caption here',
     })
 
     await router.push('/profile')

@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="w-full">
+    <div class="w-full hidden md:block">
       <img class="h-screen w-full" src="https://placeholder.pics/svg/768x1024/DEDEDE/555555" alt="placeholder">
     </div>
   </div>
