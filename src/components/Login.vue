@@ -56,7 +56,6 @@ const logIn = async () => {
   try {
     await signInWithEmailAndPassword(auth, email.value, password.value)
     await router.push('/profile')
-    console.log('Successfully log in!')
   } catch (error) {
     console.log(error.code)
   }

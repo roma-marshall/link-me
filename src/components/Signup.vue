@@ -51,7 +51,9 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth'
 import { getFirestore, doc, setDoc } from 'firebase/firestore'
+import { useNotification } from '@kyvg/vue3-notification'
 
+const { notify }  = useNotification()
 const router = useRouter()
 const email = ref()
 const password = ref()
@@ -72,9 +74,14 @@ const signUp = async () => {
       instLink: '',
       tiktokLink: '',
     })
-
     await router.push('/profile')
-    console.log('Successfully sign up!')
+    notify({
+      title: 'An account has been created',
+      type: 'notification',
+      speed: 500,
+      duration: 1500,
+      ignoreDuplicates: true
+    })
   } catch (error) {
     console.log(error.code)
   }

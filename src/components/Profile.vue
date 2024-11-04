@@ -110,10 +110,11 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
-
 import { useRouter } from 'vue-router'
 import { getAuth, signOut } from 'firebase/auth'
+import { useNotification } from '@kyvg/vue3-notification'
 
+const { notify }  = useNotification()
 const router = useRouter()
 const auth = getAuth()
 const route = useRoute()
@@ -170,7 +171,13 @@ const handleSignOut = async () => {
   try {
     await signOut(auth)
     await router.push('/login')
-    console.log('Successfully log out!')
+    notify({
+      title: 'You\'ve logged out',
+      type: 'notification',
+      speed: 500,
+      duration: 1500,
+      ignoreDuplicates: true
+    })
   } catch (error) {
     console.log(error.code)
   }

@@ -81,7 +81,14 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getFirestore, doc, getDoc } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
+import { useClipboard } from '@vueuse/core'
+import { useNotification } from '@kyvg/vue3-notification'
+import { useRouter } from 'vue-router'
 
+const { copy } = useClipboard()
+const { notify }  = useNotification()
+
+const router = useRouter()
 const auth = getAuth()
 const route = useRoute()
 const db = getFirestore()
@@ -114,20 +121,21 @@ const getUserData = async () => {
     tiktokLink.value = userData.tiktokLink
   } else {
     console.log("No user data was found")
-    //todo: redirect to 404 page
+    router.push('/signup')
+    notify({
+      title: 'Wrong URL',
+      type: 'notification',
+      speed: 500,
+      duration: 1500,
+      ignoreDuplicates: true
+    })
   }
 }
-
-import { useClipboard } from '@vueuse/core'
-import { useNotification } from '@kyvg/vue3-notification'
-
-const { copy } = useClipboard()
-const { notify }  = useNotification()
 
 const copyPath = () => {
   copy(window.location.href)
   notify({
-    title: 'Copied!',
+    title: 'Copied',
     type: 'notification',
     speed: 500,
     duration: 1500,
