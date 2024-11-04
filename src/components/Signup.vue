@@ -60,7 +60,7 @@ const signUp = async () => {
   try {
     await createUserWithEmailAndPassword(auth, email.value, password.value);
     await sendEmailVerification(auth.currentUser)
-    await router.push(`/user/${auth.currentUser.uid}`)
+    await router.push('/profile')
     console.log('Successfully sign up!')
   } catch (error) {
     console.log(error.code)

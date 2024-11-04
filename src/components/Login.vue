@@ -55,7 +55,7 @@ const auth = getAuth()
 const logIn = async () => {
   try {
     await signInWithEmailAndPassword(auth, email.value, password.value)
-    await router.push(`/user/${auth.currentUser.uid}`)
+    await router.push('/profile')
     console.log('Successfully log in!')
   } catch (error) {
     console.log(error.code)
