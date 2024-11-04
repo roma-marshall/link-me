@@ -13,7 +13,7 @@
 
     <hr class="mb-10" />
 
-    <div class="flex flex-col justify-center mx-5">
+    <div class="flex flex-col justify-center mx-5 space-y-5">
 
       <div class="mx-auto">
         <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
