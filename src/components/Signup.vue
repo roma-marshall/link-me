@@ -80,6 +80,53 @@ const signUp = async () => {
     })
   } catch (error) {
     console.log(error.code)
+    switch (error.code) {
+      case 'auth/invalid-email':
+        notify({
+          title: 'Invalid email',
+          type: 'notification',
+          speed: 500,
+          duration: 1500,
+          ignoreDuplicates: true
+        })
+        break
+      case 'auth/missing-email':
+        notify({
+          title: 'Missing email',
+          type: 'notification',
+          speed: 500,
+          duration: 1500,
+          ignoreDuplicates: true
+        })
+        break
+      case 'auth/missing-password':
+        notify({
+          title: 'Missing password',
+          type: 'notification',
+          speed: 500,
+          duration: 1500,
+          ignoreDuplicates: true
+        })
+        break
+      case 'auth/email-already-in-use':
+        notify({
+          title: 'Email already in use',
+          type: 'notification',
+          speed: 500,
+          duration: 1500,
+          ignoreDuplicates: true
+        })
+        break
+      default:
+        notify({
+          title: 'Unexpected error. Try later',
+          type: 'notification',
+          speed: 500,
+          duration: 1500,
+          ignoreDuplicates: true
+        })
+        break
+    }
   }
 }
 </script>
