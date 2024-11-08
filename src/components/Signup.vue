@@ -1,17 +1,17 @@
 <template>
   <div class="flex justify-between">
-    <div class="w-full">
-      <div class="flex flex-col justify-around h-screen mx-10">
+    <div class="w-full md:w-1/3">
+      <div class="flex flex-col justify-around h-screen mx-5 md:mx-10">
         <div class="flex">
           link me [logo]
         </div>
         <div class="flex flex-col space-y-10">
           <div class="flex flex-col space-y-4">
-            <div class="text-6xl text-center">Join Link Me</div>
-            <div class="text-lg text-center">Sign up for free!</div>
+            <div class="text-6xl">Join Link Me</div>
+            <div class="text-lg">Sign up for free!</div>
           </div>
 
-          <form class="max-w-sm mx-auto w-full">
+          <form class="w-full">
             <div class="relative mb-5">
               <div class="absolute -translate-y-1/2 top-1/2 left-4">
                 <svg class="text-gray-500 size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -34,16 +34,16 @@
               </div>
               <label for="terms" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
             </div>
-            <button @click="signUp" :disabled="!isChecked" :class="{ 'bg-gray-500 hover:bg-gray-500 cursor-default' : !isChecked }" class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
+            <button @click="signUp" :disabled="!isChecked" :class="{ 'bg-gray-500 hover:bg-gray-500 cursor-default' : !isChecked }" class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
           </form>
         </div>
 
-        <div class="text-center">
+        <div>
           Already have an account? <router-link to="/login" class="underline text-blue-500">Log In</router-link>
         </div>
       </div>
     </div>
-    <div class="w-full hidden md:block">
+    <div class="w-2/3 hidden md:block">
       <img class="h-screen w-full" src="https://placeholder.pics/svg/768x1024/DEDEDE/555555" alt="placeholder">
     </div>
   </div>

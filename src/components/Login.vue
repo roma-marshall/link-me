@@ -1,18 +1,18 @@
 <template>
   <div class="flex justify-between">
-    <div class="w-full">
-      <div class="flex flex-col justify-around h-screen mx-10">
+    <div class="w-full md:w-1/3">
+      <div class="flex flex-col justify-around h-screen mx-5 md:mx-10">
         <div class="flex">
           link me [logo]
         </div>
 
         <div class="flex flex-col space-y-10">
           <div class="flex flex-col space-y-4">
-            <div class="text-6xl text-center">Welcome back!</div>
-            <div class="text-lg text-center">Log in to your Link Me</div>
+            <div class="text-6xl">Welcome back!</div>
+            <div class="text-lg">Log in to your Link Me</div>
           </div>
 
-          <form class="max-w-sm mx-auto w-full">
+          <form class="w-full">
             <div class="relative mb-5">
               <div class="absolute -translate-y-1/2 top-1/2 left-4">
                 <svg class="text-gray-500 size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -29,16 +29,16 @@
               </div>
               <input @keyup.enter="logIn" v-model="password" type="password" id="password" class="pl-12 bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Password" required />
             </div>
-            <a @click="logIn" class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Log In</a>
+            <a @click="logIn" class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full sm:w-auto px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Log In</a>
           </form>
         </div>
 
-        <div class="text-center">
+        <div>
           Don't have an account? <router-link to="/signup" class="underline text-blue-500">Sign up</router-link>
         </div>
       </div>
     </div>
-    <div class="w-full hidden md:block">
+    <div class="w-2/3 hidden md:block">
       <img class="h-screen w-full" src="https://placeholder.pics/svg/768x1024/DEDEDE/555555" alt="placeholder">
     </div>
   </div>
