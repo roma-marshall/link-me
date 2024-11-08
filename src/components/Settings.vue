@@ -128,43 +128,49 @@ const getUserData = async () => {
 const removeLink = async (indexToDelete) => {
   const user = auth.currentUser
 
-  if (user) {
-    const uid = user.uid
-    const docRef = doc(db, 'users', uid)
-    const userDoc = await getDoc(docRef)
+  if (isActive.value === false) {
+    title.value = title.value.filter(item => item !== '')
+    link.value = link.value.filter(item => item !== '')
+    isActive.value = true
+  } else {
+    if (user) {
+      const uid = user.uid
+      const docRef = doc(db, 'users', uid)
+      const userDoc = await getDoc(docRef)
 
-    if (userDoc.exists()) {
-      const userData = userDoc.data()
-      const titles = userData.title || []
-      const links = userData.link || []
+      if (userDoc.exists()) {
+        const userData = userDoc.data()
+        const titles = userData.title || []
+        const links = userData.link || []
 
-      swipeOutIndex.value = indexToDelete
-      setTimeout(() => {
-        hiddenIndices.value.add(indexToDelete)
-        swipeOutIndex.value = null
-        isActive.value = true
-      }, 500)
+        swipeOutIndex.value = indexToDelete
+        setTimeout(() => {
+          hiddenIndices.value.add(indexToDelete)
+          swipeOutIndex.value = null
+          isActive.value = true
+        }, 500)
 
-      if (indexToDelete >= 0 && indexToDelete < titles.length) {
-        titles.splice(indexToDelete, 1)
-        links.splice(indexToDelete, 1)
-        await updateDoc(docRef, {
-          title: titles,
-          link: links
-        })
+        if (indexToDelete >= 0 && indexToDelete < titles.length) {
+          titles.splice(indexToDelete, 1)
+          links.splice(indexToDelete, 1)
+          await updateDoc(docRef, {
+            title: titles,
+            link: links
+          })
 
-        notify({
-          title: 'Removed',
-          type: 'notification',
-          speed: 500,
-          duration: 1500,
-          ignoreDuplicates: true
-        })
+          notify({
+            title: 'Removed',
+            type: 'notification',
+            speed: 500,
+            duration: 1500,
+            ignoreDuplicates: true
+          })
+        } else {
+          console.error('Index out of range')
+        }
       } else {
-        console.error('Index out of range')
+        console.log('No user data was found')
       }
-    } else {
-      console.log('No user data was found')
     }
   }
 }
