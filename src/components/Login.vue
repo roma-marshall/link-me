@@ -51,7 +51,7 @@ const auth = getAuth()
 const logIn = async () => {
   try {
     await signInWithEmailAndPassword(auth, email.value, password.value)
-    await router.push('/profile')
+    await router.push('/settings')
   } catch (error) {
     switch (error.code) {
       case 'auth/invalid-email':

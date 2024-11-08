@@ -63,15 +63,10 @@ const signUp = async () => {
     await setDoc(doc(db, 'users', auth.currentUser.uid), {
       username: auth.currentUser.email.slice(0, 5),
       description: 'A UFO flew in and posted this caption here',
+      title: [],
+      link: []
     })
-    await router.push('/profile')
-    notify({
-      title: 'An account has been created',
-      type: 'notification',
-      speed: 500,
-      duration: 1500,
-      ignoreDuplicates: true
-    })
+    await router.push('/settings')
   } catch (error) {
     console.log(error.code)
     switch (error.code) {

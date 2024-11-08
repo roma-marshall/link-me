@@ -2,17 +2,17 @@ import { createWebHistory, createRouter } from 'vue-router'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 import Home from '../components/Home.vue'
-import Profile from '../components/Profile.vue'
+import Settings from '../components/Settings.vue'
 import Login from '../components/Login.vue'
 import Signup from '../components/Signup.vue'
-import UserWithId from '../components/UserWithId.vue'
+import Profile from '../components/Profile.vue'
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/profile', component: Profile, meta: { requiresAuth: true } },
+  { path: '/settings', component: Settings, meta: { requiresAuth: true } },
   { path: '/login', component: Login },
   { path: '/signup', component: Signup },
-  { path: '/user/:id', component: UserWithId },
+  { path: '/user/:id', component: Profile },
 
 ]
 
