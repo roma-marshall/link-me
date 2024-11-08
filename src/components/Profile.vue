@@ -123,8 +123,6 @@ const getUserData = async () => {
 const removeLink = async (indexToDelete) => {
   const user = auth.currentUser
 
-  // console.log(title.value[indexToDelete], link.value[indexToDelete])
-
   if (user) {
     const uid = user.uid
     const docRef = doc(db, 'users', uid)
