@@ -60,7 +60,7 @@ const signUp = async () => {
     await createUserWithEmailAndPassword(auth, email.value, password.value);
     await sendEmailVerification(auth.currentUser)
 
-    await setDoc(doc(db, "users", auth.currentUser.uid), {
+    await setDoc(doc(db, 'users', auth.currentUser.uid), {
       username: auth.currentUser.email.slice(0, 5),
       description: 'A UFO flew in and posted this caption here',
     })

@@ -50,20 +50,24 @@
         <div class="max-w-sm mx-auto w-full">
           <div class="flex mb-4" v-for="(i, index) in title">
             <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
-              {{ index }}
               <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
               </svg>
             </span>
             <div class="flex flex-col w-full">
-              <input v-model="title[index]" type="text" id="website-admin" class="rounded-none rounded-e-lg bg-gray-50 border-b-0 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="title">
-              <input v-model="link[index]" type="text" id="website-admin" class="rounded-none rounded-e-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="link">
+              <input v-model="title[index]" type="text" id="website-admin" class="rounded-none bg-gray-50 border-b-0 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="title">
+              <input v-model="link[index]" type="text" id="website-admin" class="rounded-none bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="link">
             </div>
+            <span @click="removeLink(index)" class="cursor-pointer inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-s-0 border-gray-300 rounded-e-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+              <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9.75 14.25 12m0 0 2.25 2.25M14.25 12l2.25-2.25M14.25 12 12 14.25m-2.58 4.92-6.374-6.375a1.125 1.125 0 0 1 0-1.59L9.42 4.83c.21-.211.497-.33.795-.33H19.5a2.25 2.25 0 0 1 2.25 2.25v10.5a2.25 2.25 0 0 1-2.25 2.25h-9.284c-.298 0-.585-.119-.795-.33Z" />
+              </svg>
+            </span>
           </div>
         </div>
 
-        <a @click="addNewLink()" class="cursor-pointer p-3 border border-gray-300 bg-gray-100 rounded-full">
-          <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <a @click="addNewLink" class="cursor-pointer p-3 border border-gray-300 bg-gray-100 rounded-full">
+          <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
         </a>
@@ -81,7 +85,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'
+import { getFirestore, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
 import { useRouter } from 'vue-router'
 import { getAuth, signOut } from 'firebase/auth'
 import { useNotification } from '@kyvg/vue3-notification'
@@ -102,7 +106,7 @@ const getUserData = async () => {
 
   if (user) {
     const uid = user.uid
-    const userDoc = await getDoc(doc(db, "users", uid))
+    const userDoc = await getDoc(doc(db, 'users', uid))
 
     if (userDoc.exists()) {
       const userData = userDoc.data()
@@ -111,7 +115,40 @@ const getUserData = async () => {
       title.value = userData.title
       link.value = userData.link
     } else {
-      console.log("No user data was found")
+      console.log('No user data was found')
+    }
+  }
+}
+
+const removeLink = async (indexToDelete) => {
+  const user = auth.currentUser
+
+  // console.log(title.value[indexToDelete], link.value[indexToDelete])
+
+  if (user) {
+    const uid = user.uid
+    const docRef = doc(db, 'users', uid)
+    const userDoc = await getDoc(docRef)
+
+    if (userDoc.exists()) {
+      const userData = userDoc.data()
+      const titles = userData.title || []
+
+      if (indexToDelete >= 0 && indexToDelete < titles.length) {
+        titles.splice(indexToDelete, 1)
+        await updateDoc(docRef, { title: titles })
+        notify({
+          title: 'Removed',
+          type: 'notification',
+          speed: 500,
+          duration: 1500,
+          ignoreDuplicates: true
+        })
+      } else {
+        console.error('Index out of range')
+      }
+    } else {
+      console.log('No user data was found')
     }
   }
 }
@@ -129,7 +166,7 @@ const saveUserData = async () => {
   if (user && (!hasEmptyStringTitle && !hasEmptyStringLink)) {
     const uid = user.uid
 
-    await setDoc(doc(db, "users", uid), {
+    await setDoc(doc(db, 'users', uid), {
       username: username.value,
       description: description.value,
       title: title.value,

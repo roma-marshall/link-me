@@ -71,7 +71,7 @@ const title = ref([])
 const link = ref([])
 
 const getUserData = async () => {
-  const userDoc = await getDoc(doc(db, "users", uid.value))
+  const userDoc = await getDoc(doc(db, 'users', uid.value))
 
   if (userDoc.exists()) {
     const userData = userDoc.data()
@@ -80,7 +80,7 @@ const getUserData = async () => {
     title.value = userData.title
     link.value = userData.link
   } else {
-    console.log("No user data was found")
+    console.log('No user data was found')
     router.push('/signup')
     notify({
       title: 'Wrong URL',
