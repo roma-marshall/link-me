@@ -5,7 +5,6 @@
         <div class="flex">
           link me [logo]
         </div>
-
         <div class="flex flex-col space-y-10">
           <div class="flex flex-col space-y-4">
             <div class="text-6xl text-center">Join Link Me</div>
@@ -64,11 +63,6 @@ const signUp = async () => {
     await setDoc(doc(db, "users", auth.currentUser.uid), {
       username: auth.currentUser.email.slice(0, 5),
       description: 'A UFO flew in and posted this caption here',
-      websiteTitle: '',
-      websiteLink: '',
-      tgLink: '',
-      instLink: '',
-      tiktokLink: '',
     })
     await router.push('/profile')
     notify({
