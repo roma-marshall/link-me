@@ -48,8 +48,8 @@
 
         <!-- Links -->
         <div class="max-w-sm mx-auto w-full">
-          <div :key="index" class="flex mb-4" v-for="(i, index) in title">
-            <div class="flex w-full" v-if="!hiddenIndices.has(index)">
+          <div :key="index" v-for="(i, index) in title">
+            <div v-if="!hiddenIndices.has(index)" :class="{ 'transform -translate-x-full opacity-0': swipeOutIndex === index }" class="flex mb-4 w-full transition-all duration-500 ease-out">
               <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-e-0 border-gray-300 rounded-s-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
               <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.672 13.684 16.6m0 0-2.51 2.225.569-9.47 5.227 7.917-3.286-.672ZM12 2.25V4.5m5.834.166-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243-1.59-1.59" />
@@ -122,6 +122,7 @@ const getUserData = async () => {
   }
 }
 
+const swipeOutIndex = ref(null)
 const hiddenIndices = ref(new Set())
 
 const removeLink = async (indexToDelete) => {
@@ -144,7 +145,13 @@ const removeLink = async (indexToDelete) => {
           title: titles,
           link: links
         })
-        hiddenIndices.value.add(indexToDelete)
+
+        swipeOutIndex.value = indexToDelete
+        setTimeout(() => {
+          hiddenIndices.value.add(indexToDelete)
+          swipeOutIndex.value = null
+        }, 500)
+
         notify({
           title: 'Removed',
           type: 'notification',
