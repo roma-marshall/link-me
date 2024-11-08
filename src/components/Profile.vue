@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex flex-col justify-center mx-5 my-10">
+    <div class="flex flex-col justify-center mx-2 my-10">
       <div class="flex justify-between">
         <a @click="$router.push('/settings')" v-if="auth?.currentUser?.uid === uid" class="cursor-pointer p-3 border border-gray-300 bg-gray-100 rounded-full">
           <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

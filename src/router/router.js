@@ -6,6 +6,7 @@ import Settings from '../components/Settings.vue'
 import Login from '../components/Login.vue'
 import Signup from '../components/Signup.vue'
 import Profile from '../components/Profile.vue'
+import NotFound from '../components/NotFound.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -13,7 +14,7 @@ const routes = [
   { path: '/login', component: Login },
   { path: '/signup', component: Signup },
   { path: '/user/:id', component: Profile },
-
+  { path: '/:pathMatch(.*)*', component: NotFound },
 ]
 
 const router = createRouter({
@@ -40,7 +41,7 @@ router.beforeEach(async (to, from, next) => {
   // If the user is authenticated and trying to visit a page where they shouldn't be
   if (user) {
     // Redirect to settings if user is logged in and trying to visit login, signup, or home
-    if (to.path === '/home' || to.path === '/login' || to.path === '/signup') {
+    if (to.path === '/' || to.path === '/login' || to.path === '/signup') {
       next('/settings')
     } else {
       next()  // Continue to the requested route
@@ -48,7 +49,6 @@ router.beforeEach(async (to, from, next) => {
   } else {
     // If user is not authenticated, handle access restrictions
     if (to.matched.some(record => record.meta.requiresAuth)) {
-      alert('Only registered users have access')
       next('/login')
     } else {
       next()  // Continue to the requested route if no auth is required
