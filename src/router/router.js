@@ -2,18 +2,19 @@ import { createWebHistory, createRouter } from 'vue-router'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 import Home from '../components/Home.vue'
-import Profile from '../components/Profile.vue'
+import Settings from '../components/Settings.vue'
 import Login from '../components/Login.vue'
 import Signup from '../components/Signup.vue'
-import UserWithId from '../components/UserWithId.vue'
+import Profile from '../components/Profile.vue'
+import NotFound from '../components/NotFound.vue'
 
 const routes = [
   { path: '/', component: Home },
-  { path: '/profile', component: Profile, meta: { requiresAuth: true } },
+  { path: '/settings', component: Settings, meta: { requiresAuth: true } },
   { path: '/login', component: Login },
   { path: '/signup', component: Signup },
-  { path: '/user/:id', component: UserWithId },
-
+  { path: '/user/:id', component: Profile },
+  { path: '/:pathMatch(.*)*', component: NotFound },
 ]
 
 const router = createRouter({
@@ -35,16 +36,23 @@ const getCurrentUser = () => {
 }
 
 router.beforeEach(async (to, from, next) => {
-  await getCurrentUser()
-  if (to.matched.some((record) => record.meta.requiresAuth)) {
-    if (await getCurrentUser()) {
-      next()
+  const user = await getCurrentUser()
+
+  // If the user is authenticated and trying to visit a page where they shouldn't be
+  if (user) {
+    // Redirect to settings if user is logged in and trying to visit login, signup, or home
+    if (to.path === '/' || to.path === '/login' || to.path === '/signup') {
+      next('/settings')
     } else {
-      alert('Only registered users have access')
-      next('/login')
+      next()  // Continue to the requested route
     }
   } else {
-    next()
+    // If user is not authenticated, handle access restrictions
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      next('/login')
+    } else {
+      next()  // Continue to the requested route if no auth is required
+    }
   }
 })
 
