@@ -102,6 +102,9 @@ const username = ref()
 const description = ref()
 const title = ref([])
 const link = ref([])
+const isActive = ref(true)
+const swipeOutIndex = ref(null)
+const hiddenIndices = ref(new Set())
 
 const getUserData = async () => {
   const user = auth.currentUser
@@ -121,9 +124,6 @@ const getUserData = async () => {
     }
   }
 }
-
-const swipeOutIndex = ref(null)
-const hiddenIndices = ref(new Set())
 
 const removeLink = async (indexToDelete) => {
   const user = auth.currentUser
@@ -169,7 +169,6 @@ const removeLink = async (indexToDelete) => {
   }
 }
 
-const isActive = ref(true)
 const addNewLink = () => {
   title.value.push('')
   link.value.push('')
