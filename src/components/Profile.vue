@@ -68,7 +68,7 @@
           </div>
         </div>
 
-        <a @click="addNewLink" class="cursor-pointer p-3 border border-gray-300 bg-gray-100 rounded-full">
+        <a v-if="isActive" @click="addNewLink" class="cursor-pointer p-3 border border-gray-300 bg-gray-100 rounded-full">
           <svg class="w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
@@ -138,6 +138,13 @@ const removeLink = async (indexToDelete) => {
       const titles = userData.title || []
       const links = userData.link || []
 
+      swipeOutIndex.value = indexToDelete
+      setTimeout(() => {
+        hiddenIndices.value.add(indexToDelete)
+        swipeOutIndex.value = null
+        isActive.value = true
+      }, 500)
+
       if (indexToDelete >= 0 && indexToDelete < titles.length) {
         titles.splice(indexToDelete, 1)
         links.splice(indexToDelete, 1)
@@ -145,12 +152,6 @@ const removeLink = async (indexToDelete) => {
           title: titles,
           link: links
         })
-
-        swipeOutIndex.value = indexToDelete
-        setTimeout(() => {
-          hiddenIndices.value.add(indexToDelete)
-          swipeOutIndex.value = null
-        }, 500)
 
         notify({
           title: 'Removed',
@@ -168,9 +169,11 @@ const removeLink = async (indexToDelete) => {
   }
 }
 
+const isActive = ref(true)
 const addNewLink = () => {
-  console.log(title.value.push(''))
-  console.log(link.value.push(''))
+  title.value.push('')
+  link.value.push('')
+  isActive.value = false
 }
 
 const saveUserData = async () => {
@@ -187,6 +190,8 @@ const saveUserData = async () => {
       title: title.value,
       link: link.value
     })
+
+    isActive.value = true
 
     notify({
       title: 'Saved',
