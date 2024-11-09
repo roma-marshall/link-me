@@ -1,24 +1,32 @@
 <template>
   <div class="flex justify-between">
-    <div class="w-full">
-      <div class="flex flex-col justify-around h-screen mx-10">
+    <div class="w-full md:w-1/3">
+      <div class="flex flex-col justify-around h-screen mx-5 md:mx-10">
         <div class="flex">
           link me [logo]
         </div>
         <div class="flex flex-col space-y-10">
           <div class="flex flex-col space-y-4">
-            <div class="text-6xl text-center">Join Link Me</div>
-            <div class="text-lg text-center">Sign up for free!</div>
+            <div class="text-6xl">Join Link Me</div>
+            <div class="text-lg">Sign up for free!</div>
           </div>
 
-          <form class="max-w-sm mx-auto w-full">
-            <div class="mb-5">
-              <label for="email" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Email</label>
-              <input @keyup.enter="signUp" v-model="email" type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="name@flowbite.com" required />
+          <form class="w-full">
+            <div class="relative mb-5">
+              <div class="absolute -translate-y-1/2 top-1/2 left-4">
+                <svg class="text-gray-500 size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                </svg>
+              </div>
+              <input v-model="email" type="email" id="email" class="pl-12 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Email" required />
             </div>
-            <div class="mb-5">
-              <label for="password" class="block mb-2 text-base font-medium text-gray-900 dark:text-white">Password</label>
-              <input @keyup.enter="signUp" v-model="password" type="password" id="password" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+            <div class="relative mb-5">
+              <div class="absolute -translate-y-1/2 top-1/2 left-4">
+                <svg class="text-gray-500 size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                </svg>
+              </div>
+              <input @keyup.enter="signUp" v-model="password" type="password" id="password" class="pl-12 shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Password" required />
             </div>
             <div class="flex items-start mb-5">
               <div class="flex items-center h-5">
@@ -26,16 +34,16 @@
               </div>
               <label for="terms" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a></label>
             </div>
-            <button @click="signUp" :disabled="!isChecked" :class="{ 'bg-gray-500 hover:bg-gray-500 cursor-default' : !isChecked }" class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
+            <button @click="signUp" :disabled="!isChecked" :class="{ 'bg-gray-500 hover:bg-gray-500 cursor-default' : !isChecked }" class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
           </form>
         </div>
 
-        <div class="text-center">
+        <div>
           Already have an account? <router-link to="/login" class="underline text-blue-500">Log In</router-link>
         </div>
       </div>
     </div>
-    <div class="w-full hidden md:block">
+    <div class="w-2/3 hidden md:block">
       <img class="h-screen w-full" src="https://placeholder.pics/svg/768x1024/DEDEDE/555555" alt="placeholder">
     </div>
   </div>
