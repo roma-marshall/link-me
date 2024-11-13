@@ -75,7 +75,7 @@
         </a>
 
         <!-- Save data -->
-        <a @click="saveUserData" class="cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-2.5 text-center">
+        <a @click="saveUserData" class="btn">
           Save
         </a>
 
