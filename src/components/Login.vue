@@ -38,16 +38,16 @@
         </div>
       </div>
     </div>
-    <div class="w-2/3 hidden md:block rounded-l-[15%] gradient1">
+    <div :class="gradient" class="w-2/3 hidden md:block rounded-l-[15%]">
       <div class="flex flex-col justify-center my-auto h-screen">
-<!--        <span class="text-9xl text-white text-center glow">[your link]</span>-->
+        <!--        <span class="text-9xl text-white text-center glow">[your link]</span>-->
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { useNotification } from '@kyvg/vue3-notification'
@@ -57,6 +57,14 @@ const router = useRouter()
 const email = ref()
 const password = ref()
 const auth = getAuth()
+
+const gradient = ref()
+
+onMounted(() => {
+  const rand = Math.floor(Math.random() * 10) + 1 // Генерируем число от 1 до 10
+  gradient.value = `gradient${rand}`
+  console.log(gradient.value)
+})
 
 const logIn = async () => {
   try {

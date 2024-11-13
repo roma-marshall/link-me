@@ -14,11 +14,56 @@
     .glow {
         text-shadow: 0 0 5px white;
     }
+}
 
-    .gradient1 {
-        color: inherit;
-        background-image: conic-gradient(from 0deg at 57% 16%, hsla(0,0%,81.96%,0.5324211569871893) 4%, hsla(215.47,79.1%,39.41%,0.7271332783320745) 48%), repeating-linear-gradient(198deg, hsla(37.36,65.43%,15.88%,0.9533207847869654) 2%, hsla(348.28,84.47%,20.2%,0.17369834259771877) 7%), conic-gradient(from 242deg at 80% 40%, hsla(128.7,51.11%,26.47%,0.1938289976025036) 76%, hsla(30.13,100%,53.92%,0.4996780616482883) 76%), repeating-radial-gradient(ellipse at 98% 16%, hsla(163.85,69.33%,29.41%,0.6257518614618973) 14%, hsla(157.3,52.11%,13.92%,0.09894081398654175) 59%), repeating-radial-gradient(circle at 87% 28%, #ccc500 8%, #110517 23%);
-    }
+.gradient1 {
+    color: inherit;
+    background-image: conic-gradient(from 0deg at 57% 16%, hsla(0,0%,81.96%,0.5324211569871893) 4%, hsla(215.47,79.1%,39.41%,0.7271332783320745) 48%), repeating-linear-gradient(198deg, hsla(37.36,65.43%,15.88%,0.9533207847869654) 2%, hsla(348.28,84.47%,20.2%,0.17369834259771877) 7%), conic-gradient(from 242deg at 80% 40%, hsla(128.7,51.11%,26.47%,0.1938289976025036) 76%, hsla(30.13,100%,53.92%,0.4996780616482883) 76%), repeating-radial-gradient(ellipse at 98% 16%, hsla(163.85,69.33%,29.41%,0.6257518614618973) 14%, hsla(157.3,52.11%,13.92%,0.09894081398654175) 59%), repeating-radial-gradient(circle at 87% 28%, #ccc500 8%, #110517 23%);
+}
+
+.gradient2 {
+    color: inherit;
+    background-image: repeating-conic-gradient(from 277deg at 32% 36%, hsla(312,62.5%,96.86%,0.846429481076785) 50%, hsla(313.42,63.87%,53.33%,0.44753973799721103) 71%), conic-gradient(from 216deg at 86% 48%, hsla(40.18,87.2%,75.49%,0.5940137681504076) 20%, hsla(214.9,83.61%,64.12%,0.09547545060734697) 88%), linear-gradient(166deg, hsla(247.04,80.2%,60.39%,0.6978935163901558) 6%, hsla(11.3,99.04%,59.02%,0.17906174825051946) 9%), repeating-conic-gradient(from 209deg at 23% 49%, hsla(37.06,62.96%,10.59%,0.8111738308521386) 52%, hsla(215,84%,80.39%,0.51639661628532) 60%), repeating-conic-gradient(from 68deg at 59% 75%, hsla(215.33,78.95%,22.35%,0.546349086409758) 39%, hsla(347.6,80.13%,70.39%,0.5582229082692161) 48%), repeating-radial-gradient(ellipse at 68% 61%, hsla(0,0%,27.45%,0.9821149263229421) 48%, hsla(313.43,63.81%,79.41%,0.4151894165683676) 64%), repeating-radial-gradient(ellipse at 71% 85%, hsla(180,100%,94.31%,0.413211229517338) 65%, hsla(184.9,47.57%,20.2%,0.433883751227389) 76%), conic-gradient(from 176deg at 42% 7%, #fbe5bc 78%, #7daef4 92%);
+}
+
+.gradient3 {
+    color: inherit;
+    background-image: linear-gradient(14deg, hsla(11.62,98.77%,68.24%,0.38106904871831593) 43%, hsla(244.29,7.37%,37.25%,0.578343960151287) 73%), radial-gradient(circle at 7% 73%, hsla(215.11,83.93%,56.08%,0.9865186419765501) 9%, hsla(348,80.65%,87.84%,0.2668218559979971) 18%), conic-gradient(from 107deg at 72% 28%, hsla(348,79.44%,79.02%,0.5818127625418286) 39%, hsla(215,84%,80.39%,0.6030548166206808) 90%), conic-gradient(from 118deg at 99% 77%, hsla(312,62.5%,96.86%,0.936579116945794) 76%, hsla(240,7.69%,97.45%,0.7778237616044377) 100%), linear-gradient(137deg, #fe7d5e 61%, #1b5b45 70%);
+}
+
+.gradient4 {
+    color: inherit;
+    background-image: repeating-conic-gradient(from 2deg at 17% 32%, hsla(57.78,87.1%,12.16%,0.8574755653440329) 96%, hsla(215.29,84.4%,72.35%,0.6140659634286252) 97%), repeating-linear-gradient(165deg, hsla(348,80.65%,87.84%,0.27623078357461006) 50%, hsla(313.43,63.81%,79.41%,0.564841122848804) 77%), repeating-radial-gradient(circle at 79% 49%, hsla(57.61,97.1%,59.41%,0.012153326221218341) 67%, hsla(247.13,100%,68.63%,0.6357938212052221) 71%), radial-gradient(ellipse at 75% 30%, hsla(113.33,36%,4.9%,0.7816722857988121) 22%, hsla(185,46.15%,15.29%,0.028110648279277006) 32%), repeating-linear-gradient(202deg, #464646 68%, #5c49eb 71%);
+}
+
+.gradient5 {
+    color: inherit;
+    background-image: conic-gradient(from 246deg at 20% 58%, hsla(216,88.24%,96.67%,0.9312706303601728) 41%, hsla(240,7.94%,12.35%,0.9710439766409718) 68%), repeating-linear-gradient(245deg, hsla(0,0%,18.43%,0.005226007857134007) 0%, hsla(244.29,7.37%,37.25%,0.5390637629278532) 54%), conic-gradient(from 207deg at 6% 65%, hsla(0,0%,0%,0.8763564089289586) 14%, hsla(348.28,84.47%,20.2%,0.712567647030522) 47%), linear-gradient(230deg, hsla(0,0%,36.86%,0.01674042834488465) 31%, hsla(240,10%,3.92%,0.5412772931022443) 72%), conic-gradient(from 170deg at 53% 55%, #fdeef1 40%, #177f63 61%);
+}
+
+.gradient6 {
+    color: inherit;
+    background-image: repeating-linear-gradient(127deg, hsla(0,0%,63.92%,0.6917729819916454) 45%, hsla(0,0%,100%,0.9266424254234849) 50%), conic-gradient(from 164deg at 97% 11%, hsla(29.17,100%,85.88%,0.8389640791179316) 45%, hsla(243.75,6.84%,54.12%,0.3315102748066556) 71%), radial-gradient(ellipse at 41% 37%, hsla(243.75,6.84%,54.12%,0.7668778686278119) 36%, hsla(37.36,65.43%,15.88%,0.49340565950734505) 66%), repeating-linear-gradient(325deg, hsla(41.01,88.44%,44.12%,0.3930216219462854) 93%, hsla(347.94,85.09%,44.71%,0.20562930641689703) 93%), repeating-radial-gradient(ellipse at 92% 54%, #0c3166 57%, #d089f3 78%);
+}
+
+.gradient7 {
+    color: inherit;
+    background-image: repeating-radial-gradient(circle at 73% 74%, hsla(280.34,70.16%,51.37%,0.38663800986901786) 49%, hsla(280.91,81.48%,89.41%,0.6886947068080596) 63%), repeating-conic-gradient(from 292deg at 47% 94%, hsla(247.13,100%,68.63%,0.8249002931660301) 42%, hsla(0,0%,63.92%,0.45933022056327966) 81%), repeating-linear-gradient(11deg, hsla(153.33,39.13%,4.51%,0.6496948945443988) 14%, hsla(215.11,83.93%,56.08%,0.8850171916087834) 71%), linear-gradient(204deg, hsla(247.13,100%,68.63%,0.8879998028454688) 5%, hsla(0,0%,0%,0.7902097159617756) 25%), linear-gradient(52deg, #fff5e9 10%, #e7284e 71%);
+}
+
+.gradient8 {
+    color: inherit;
+    background-image: repeating-linear-gradient(72deg, hsla(56.94,96.08%,80%,0.6351508678886437) 20%, hsla(280.34,70.16%,51.37%,0.7924635839091325) 46%), repeating-linear-gradient(301deg, hsla(54.55,47.83%,4.51%,0.654785940001285) 6%, hsla(40.18,87.2%,75.49%,0.2999012625277253) 39%), linear-gradient(350deg, hsla(247.13,100%,68.63%,0.3045206359422179) 59%, hsla(347.6,80.13%,70.39%,0.7100328129253659) 66%), repeating-conic-gradient(from 186deg at 39% 76%, hsla(215.33,78.95%,22.35%,0.4106889097865196) 3%, hsla(216,88.24%,96.67%,0.3031232393813852) 99%), repeating-conic-gradient(from 159deg at 18% 15%, hsla(140.87,64.49%,41.96%,0.5588030623029296) 41%, hsla(280.41,65.33%,14.71%,0.9534521112138765) 45%), linear-gradient(86deg, hsla(125.22,43.4%,10.39%,0.8644840321834328) 7%, hsla(30.17,100%,64.51%,0.12347328812880476) 48%), linear-gradient(348deg, #860b24 41%, #cb3411 64%);
+}
+
+.gradient9 {
+    color: inherit;
+    background-image: repeating-conic-gradient(from 141deg at 88% 24%, hsla(56.79,97.04%,73.53%,0.978823251492529) 4%, hsla(280.28,66.51%,42.16%,0.8522166269892661) 34%), repeating-conic-gradient(from 26deg at 6% 63%, hsla(215.51,83.05%,88.43%,0.9908036056655309) 19%, hsla(280.47,81.64%,59.41%,0.6551574254408736) 89%), repeating-conic-gradient(from 224deg at 24% 91%, hsla(348.06,79.92%,53.14%,0.6168822024709222) 10%, hsla(38,65.22%,27.06%,0.28666444951928316) 50%), repeating-conic-gradient(from 100deg at 78% 6%, hsla(59.2,92.59%,15.88%,0.2498426067241999) 19%, hsla(128.7,51.11%,26.47%,0.8370407991673543) 20%), repeating-linear-gradient(74deg, #9e1e82 12%, #d31138 41%);
+}
+
+.gradient10 {
+    color: inherit;
+    background-image: linear-gradient(232deg, hsla(127.78,50%,21.18%,0.3202393234246754) 11%, hsla(312,62.5%,96.86%,0.6201418976633881) 25%), linear-gradient(313deg, hsla(313.17,63.73%,62.16%,0.44527532150091775) 78%, hsla(312.63,63.33%,88.24%,0.3954899932805298) 83%), radial-gradient(ellipse at 53% 63%, hsla(182.86,39.62%,10.39%,0.506809052742536) 11%, hsla(347.85,84.95%,36.47%,0.22606826858754547) 77%), conic-gradient(from 14deg at 97% 35%, hsla(280.47,81.64%,59.41%,0.8376302373360447) 2%, hsla(57.94,100%,40%,0.3290944806420113) 99%), repeating-linear-gradient(235deg, #a69aff 68%, #000000 70%);
 }
 
 .fade-enter-active,
