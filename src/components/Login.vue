@@ -38,8 +38,10 @@
         </div>
       </div>
     </div>
-    <div class="w-2/3 hidden md:block">
-      <img class="h-screen w-full" src="https://placeholder.pics/svg/768x1024/DEDEDE/555555" alt="placeholder">
+    <div class="w-2/3 hidden md:block rounded-l-[15%] gradient1">
+      <div class="flex flex-col justify-center my-auto h-screen">
+<!--        <span class="text-9xl text-white text-center glow">[your link]</span>-->
+      </div>
     </div>
   </div>
 </template>

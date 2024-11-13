@@ -10,6 +10,15 @@
     .btn {
         @apply cursor-pointer text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base px-5 py-2.5
     }
+
+    .glow {
+        text-shadow: 0 0 5px white;
+    }
+
+    .gradient1 {
+        color: inherit;
+        background-image: conic-gradient(from 0deg at 57% 16%, hsla(0,0%,81.96%,0.5324211569871893) 4%, hsla(215.47,79.1%,39.41%,0.7271332783320745) 48%), repeating-linear-gradient(198deg, hsla(37.36,65.43%,15.88%,0.9533207847869654) 2%, hsla(348.28,84.47%,20.2%,0.17369834259771877) 7%), conic-gradient(from 242deg at 80% 40%, hsla(128.7,51.11%,26.47%,0.1938289976025036) 76%, hsla(30.13,100%,53.92%,0.4996780616482883) 76%), repeating-radial-gradient(ellipse at 98% 16%, hsla(163.85,69.33%,29.41%,0.6257518614618973) 14%, hsla(157.3,52.11%,13.92%,0.09894081398654175) 59%), repeating-radial-gradient(circle at 87% 28%, #ccc500 8%, #110517 23%);
+    }
 }
 
 .fade-enter-active,
