@@ -3,7 +3,7 @@
     <div class="w-full md:w-1/3">
       <div class="flex flex-col justify-around h-screen mx-5 md:mx-10">
         <div class="flex">
-          link me [logo]
+<!--          link me [logo]-->
         </div>
 
         <div class="flex flex-col space-y-10">
