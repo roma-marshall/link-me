@@ -76,7 +76,7 @@ onMounted(() => {
 
 const signUp = async () => {
   try {
-    await createUserWithEmailAndPassword(auth, email.value, password.value);
+    await createUserWithEmailAndPassword(auth, email.value, password.value)
     await sendEmailVerification(auth.currentUser)
     await setDoc(doc(db, 'users', auth.currentUser.uid), {
       username: auth.currentUser.email.slice(0, 5),
